@@ -1,0 +1,339 @@
+@import "tailwindcss";
+
+/* ===== SAGO WHISKY — LUXURY DESIGN SYSTEM ===== */
+
+@theme {
+  /* Brand Colors */
+  --color-sago-black: #0A0A0A;
+  --color-sago-dark: #111111;
+  --color-sago-charcoal: #1A1A1A;
+  --color-sago-gunmetal: #2A2A2A;
+  --color-sago-green: #0A3D1A;
+  --color-sago-green-light: #1A5C2E;
+  --color-sago-green-dark: #062E10;
+  --color-sago-gold: #C9A84C;
+  --color-sago-gold-light: #E2C97A;
+  --color-sago-gold-dark: #9A7B2E;
+  --color-sago-amber: #D4A844;
+  --color-sago-camo: #4A6741;
+  --color-sago-camo-light: #6B8862;
+  --color-sago-crimson: #8B1A1A;
+  --color-sago-cream: #F5F0E6;
+  --color-sago-white: #FAFAF8;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-accent: 'Cormorant Garamond', Georgia, serif;
+
+  /* Animations */
+  --animate-gold-shimmer: gold-shimmer 3s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-gold: pulse-gold 2s ease-in-out infinite;
+  --animate-spin-reel: spin-reel 0.1s linear infinite;
+  --animate-fade-in-up: fade-in-up 0.8s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-particle: particle-float 8s ease-in-out infinite;
+  --animate-glow: glow-pulse 2s ease-in-out infinite;
+}
+
+/* ===== KEYFRAMES ===== */
+
+@keyframes gold-shimmer {
+  0%, 100% { background-position: -200% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 5px rgba(201, 168, 76, 0.3); }
+  50% { box-shadow: 0 0 25px rgba(201, 168, 76, 0.6), 0 0 50px rgba(201, 168, 76, 0.2); }
+}
+
+@keyframes spin-reel {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translate(var(--tx, 100px), var(--ty, -200px)) rotate(var(--tr, 360deg)); opacity: 0; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(201, 168, 76, 0.4)); }
+  50% { filter: drop-shadow(0 0 15px rgba(201, 168, 76, 0.8)); }
+}
+
+@keyframes reel-stop {
+  0% { transform: translateY(var(--offset)); }
+  60% { transform: translateY(calc(var(--final) - 10px)); }
+  80% { transform: translateY(calc(var(--final) + 5px)); }
+  100% { transform: translateY(var(--final)); }
+}
+
+@keyframes confetti {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes slot-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ===== BASE STYLES ===== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #F5F0E6;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #C9A84C, #9A7B2E);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #E2C97A, #C9A84C);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Glassmorphism */
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.glass-dark {
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(201, 168, 76, 0.1);
+}
+
+.glass-gold {
+  background: rgba(201, 168, 76, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+}
+
+/* Gold Text Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #E2C97A 0%, #C9A84C 40%, #9A7B2E 60%, #E2C97A 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gold-shimmer {
+  background: linear-gradient(90deg, #9A7B2E 0%, #E2C97A 25%, #C9A84C 50%, #E2C97A 75%, #9A7B2E 100%);
+  background-size: 400% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 3s ease-in-out infinite;
+}
+
+/* Gold Border Gradient */
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #C9A84C, #E2C97A, #9A7B2E) 1;
+}
+
+/* Premium Button */
+.btn-gold {
+  background: linear-gradient(135deg, #C9A84C 0%, #E2C97A 50%, #C9A84C 100%);
+  color: #0A0A0A;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-gold:hover::before {
+  left: 100%;
+}
+
+.btn-gold:hover {
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.5), 0 0 60px rgba(201, 168, 76, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-outline-gold {
+  border: 1px solid #C9A84C;
+  color: #C9A84C;
+  background: transparent;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(201, 168, 76, 0.1);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Section Divider */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C9A84C, transparent);
+}
+
+/* Premium Card */
+.card-luxury {
+  background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(17, 17, 17, 0.95));
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+
+.card-luxury:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(201, 168, 76, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Slot Machine Specific */
+.slot-reel {
+  overflow: hidden;
+  position: relative;
+}
+
+.slot-reel::before,
+.slot-reel::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.slot-reel::before {
+  top: 0;
+  background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), transparent);
+}
+
+.slot-reel::after {
+  bottom: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+}
+
+/* Casino Glow Effects */
+.casino-glow {
+  box-shadow: 
+    0 0 15px rgba(201, 168, 76, 0.3),
+    inset 0 0 15px rgba(201, 168, 76, 0.1);
+}
+
+.casino-glow-intense {
+  box-shadow: 
+    0 0 30px rgba(201, 168, 76, 0.5),
+    0 0 60px rgba(201, 168, 76, 0.2),
+    inset 0 0 20px rgba(201, 168, 76, 0.15);
+}
+
+/* Particles Container */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #C9A84C;
+  border-radius: 50%;
+  animation: particle-float var(--duration, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+}
+
+/* Age Gate Overlay */
+.age-gate-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.97);
+  backdrop-filter: blur(10px);
+}
+
+/* Map Dark Theme Override */
+.map-dark .gm-style {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Selection */
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #F5F0E6;
+}
