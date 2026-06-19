@@ -293,7 +293,7 @@ export default function BarsPage() {
           <div className="lg:col-span-3">
             <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden glass border border-sago-gold/10">
               <iframe
-                src={`https://www.google.com/maps/embed/v1/search?key=AIzaSyCXhNfYr9MPGY0Jy5YEkwzCW0Z_bZQeUqw&q=bars+in+${selectedCity === "All" ? "Kenya" : selectedCity + "+Kenya"}&zoom=${selectedCity === "All" ? 6 : 12}&maptype=roadmap`}
+                src={`https://www.google.com/maps/embed/v1/search?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&q=bars+in+${selectedCity === "All" ? "Kenya" : selectedCity + "+Kenya"}&zoom=${selectedCity === "All" ? 6 : 12}&maptype=roadmap`}
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(0.9) hue-rotate(180deg) saturate(0.3) brightness(0.7)" }}
