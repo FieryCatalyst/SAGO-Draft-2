@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Environment Variables
+
+Create a local `.env.local` file with the Google Maps embed key before running the app:
+
+```bash
+cp .env.example .env.local
+```
+
+Then replace the placeholder value for `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` with your own Google Maps API key.
+
 ## Getting Started
 
 First, run the development server:
